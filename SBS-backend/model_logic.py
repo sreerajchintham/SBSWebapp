@@ -37,6 +37,7 @@ def get_estimator(name):
         raise ValueError("Unsupported model")
 
 def run_sbs(df, target_col, model_name, k):
+    df.dropna(inplace = True)
     encoded_df, encoders = encode_categorical_columns(df)
     feature_cols = [col for col in encoded_df.columns if col != target_col]
 
